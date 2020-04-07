@@ -1,0 +1,72 @@
+require:
+  - rubocop-rspec
+  - rubocop-performance
+  - rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 2.7.1
+  Exclude:
+    - 'vendor/**/*'
+    - 'bin/*'
+    - 'db/schema.rb'
+    - 'test/'
+    - 'config/initializers/*'
+    - 'config/environments/*'
+    - 'test/*'
+    - 'config/*'
+    - 'Rakefile'
+    - 'Gemfile'
+  
+
+Style/MixinUsage:
+  Exclude:
+    - bin/*
+
+Style/Documentation:
+  Enabled: false
+
+RSpec/MessageSpies:
+  Enabled: false
+
+RSpec/ExpectInHook:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/LetSetup:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Rails/InverseOf:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - spec/**/*
+
+RSpec/AnyInstance:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false

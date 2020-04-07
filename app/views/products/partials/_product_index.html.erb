@@ -1,20 +1,24 @@
-<table style="width:100%">
-    <tr>
-        <th>Title</th>
-        <th>Price</th>
-        <th>Release Date</th>
-        <th>Label</th>
-        <th>Main Genres (5 newest)</th>
-    </tr>
-    <% @products.each do |product| %>
+<table style="width: 100%;">
+    <thead>
         <tr>
-            <td><%= product.title %></td>
-            <td><%= product.price %></td>
-            <td><%= product.release_date %></td>
-            <td><%= product.label.name %></td>
-            <td>
-                <%= product.genres.order(created_at: :desc).take(5).pluck(:name).join(', ') %>
-            </td>
+            <th align="left">Title</th>
+            <th align="left">Price</th>
+            <th align="left">Release Date</th>
+            <th align="left">Label</th>
+            <th align="left">Main Genres (5 newest)</th>
         </tr>
-    <% end %>
+    </thead>
+    <tbody>
+        <% @products.each do |product| %>
+            <tr>
+                <td><%= product.title %></td>
+                <td><%= product.price %></td>
+                <td><%= product.release_date %></td>
+                <td><%= product.label.name %></td>
+                <td>
+                    <%= product.genres.order(created_at: :desc).take(5).pluck(:name).join(', ') %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
 </table>
