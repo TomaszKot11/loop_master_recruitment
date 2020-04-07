@@ -1,20 +1,7 @@
-<table style="width:100%">
-    <tr>
-        <th>Title</th>
-        <th>Price</th>
-        <th>Release Date</th>
-        <th>Label</th>
-        <th>Main Genres (5 newest)</th>
-    </tr>
-    <% @products.each do |product| %>
-        <tr>
-            <td><%= product.title %></td>
-            <td><%= product.price %></td>
-            <td><%= product.release_date %></td>
-            <td><%= product.label %></td>
-            <td>
-                <%= product.genres.order(created_at: :desc).take(5).pluck(:name).join(', ') %>
-            </td>
-        </tr>
-    <% end %>
-</table>
+<%= form_tag 'products/search', method: :post do %>
+    <%= label_tag :query, 'Query' %>
+    <%= text_field_tag :query %>
+    <%= submit_tag 'Search' %>
+<% end %>
+
+<%= render 'products/partials/product_index' %>
