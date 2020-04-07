@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# while using Ruby 2.7.1 we can get -> https://piechowski.io/post/last-arg-keyword-deprecated-ruby-2-7/ warning :)
 class ProductsController < ApplicationController
   def index
     @products = Product.all
