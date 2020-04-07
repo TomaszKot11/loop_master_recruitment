@@ -1,7 +1,9 @@
-<%= form_tag 'products/search', method: :post do %>
-    <%= label_tag :query, 'Query' %>
-    <%= text_field_tag :query %>
-    <%= submit_tag 'Search' %>
+<%= form_tag 'products/search', method: :post, class: 'form-group' do %>
+    <div class='form-group'>
+        <%= label_tag :query, 'Query' %>
+        <%= text_field_tag :query, nil, class: 'form-control' %>
+    </div>
+    <%= submit_tag 'Search', class: 'btn btn-primary' %>
 <% end %>
 
 <%= render 'products/partials/product_index' %>

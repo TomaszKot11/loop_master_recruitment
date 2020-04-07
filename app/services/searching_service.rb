@@ -7,16 +7,17 @@ class SearchingService < ApplicationService
 
   private
 
-  def validate_query_format
+  def operate
     model_query_name_arr = @service_params.fetch(:query, nil)&.split(':')
     return [] if model_query_name_arr&.count != 2
+
+    @model_name = model_query_name_arr.first.capitalize
+    @name = model_query_name_arr.second.capitalize
+
+    perform_search
   end
 
-  def operate
-    validate_query_format
-
-    model_name = @model_query_name_arr.first.capitalize
-    name = @model_query_name_arr.second.capitalize
+  def perform_search
     return Product.where(title: name) if model_name == 'Product'
 
     # I assume both Label and Genre have name column
