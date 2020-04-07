@@ -31,3 +31,4 @@
 
 en:
   hello: "Hello world"
+  wrong_query: 'Wrong query format. The proper format is model_name:query_string.'
