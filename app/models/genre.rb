@@ -1,1 +1,4 @@
-class Genre < ApplicationRecord; end
+class Genre < ApplicationRecord
+    has_many :genres_products
+    has_many :products, through: :genres_products
+end

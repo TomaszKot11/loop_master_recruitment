@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_074550) do
+ActiveRecord::Schema.define(version: 2020_04_07_075011) do
 
   create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "genres_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "genre_id"
+    t.index ["genre_id"], name: "index_genres_products_on_genre_id"
+    t.index ["product_id"], name: "index_genres_products_on_product_id"
   end
 
   create_table "labels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -24,6 +31,8 @@ ActiveRecord::Schema.define(version: 2020_04_07_074550) do
     t.string "title"
     t.decimal "price", precision: 10
     t.datetime "release_date"
+    t.bigint "label_id"
+    t.index ["label_id"], name: "index_products_on_label_id"
   end
 
 end
