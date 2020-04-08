@@ -10,8 +10,8 @@ class SearchingService < ApplicationService
   def operate
     model_query_name_arr = @service_params.fetch(:query, nil)&.split(':')
     if model_query_name_arr&.count != 2
-        @flash[:alert] = I18n.t('wrong_query')
-        return []
+      @flash[:alert] = I18n.t('wrong_query')
+      return []
     end
 
     @model_name = model_query_name_arr.first.capitalize
