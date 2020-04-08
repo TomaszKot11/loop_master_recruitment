@@ -21,11 +21,11 @@ class SearchingService < ApplicationService
   end
 
   def perform_search
-    return Product.where(title: name) if model_name == 'Product'
+    return Product.where(title: @name) if @model_name == 'Product'
 
     # I assume both Label and Genre have name column
-    if %w[Genre Label].include? model_name
-      return model_name.constantize.where(name: name)
+    if %w[Genre Label].include? @model_name
+      return @model_name.constantize.where(name: @name)
                        .includes(:products).map(&:products).flatten
     end
 
