@@ -26,7 +26,7 @@ class SearchingService < ApplicationService
     # I assume both Label and Genre have name column
     if %w[Genre Label].include? @model_name
       return @model_name.constantize.where(name: @name)
-                       .includes(:products).map(&:products).flatten
+                        .includes(:products).map(&:products).flatten
     end
 
     []
