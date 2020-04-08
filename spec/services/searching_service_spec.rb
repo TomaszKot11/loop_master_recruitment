@@ -3,9 +3,11 @@
 describe SearchingService do
     let(:product) { create :product }
 
-    it 'should create product' do 
-        5.times { p '----' }
-        p product
-        5.times { p '----' }
-    end
+    context 'searching products by name' 
+
+    context 'searching products by genre'
+
+    context 'searching products by label'
+
+    context 'searching by badly formatted query'
 end
