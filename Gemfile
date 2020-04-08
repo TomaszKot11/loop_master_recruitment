@@ -68,6 +68,7 @@ group :test do
   gem 'selenium-webdriver'
   # RSpec for Rails.
   gem 'rspec-rails', '~> 3.5'
+  gem 'rails-controller-testing'
   # Simple one-liner tests for common Rails functionality.
   gem 'shoulda-matchers'
   # Easy installation and use of chromedriver to run system tests with Chrome
