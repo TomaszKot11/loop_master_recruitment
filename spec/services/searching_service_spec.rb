@@ -4,7 +4,8 @@ describe SearchingService do
     let!(:products_first) { create_list :product, 5 }
     let(:products_the_same_name) { create_list :product, 3, title: 'The_same_same' }
     let(:products) { products_first + products_the_same_name }
-    let(:service_call) { described_class.new(service_params: {query: query }).call }
+    let(:mock_flash) { {} }
+    let(:service_call) { described_class.new(service_params: { query: query, flash: mock_flash }).call }
 
     context 'searching products by name' do 
         let(:query) { "product:#{products_the_same_name.first.title}" }
@@ -19,10 +20,17 @@ describe SearchingService do
     context 'searching products by label'
 
     context 'searching by badly formatted query' do 
-        let(:bad_query) { 'bad_query' }
+        let(:query) { 'bad_query' }
 
-        it 'should return empty collection' 
+        context 'when flash param passed' do 
+            it 'should return empty collection' do
+                expect(service_call).to match_array([])
+            end
 
-        it 'shoudl set flash  variable with appropriate message' 
+            it 'should set flash  variable with appropriate message' do 
+                service_call
+                expect(mock_flash[:alert]).to eq 'Wrong query format. The proper format is model_name:query_string.'
+            end
+        end
     end
 end
